@@ -7,8 +7,8 @@ Given an array of integers, return indices of the two numbers such that they add
 You may assume that each input would have exactly one solution.
 '''
 
-class Two_Sum(object):
-    def twosum(self, numlist, target):
+class Solution(object):
+    def twoSum(self, numlist, target):
         """
         :type nums: List[int]
         :type target: int
@@ -18,19 +18,19 @@ class Two_Sum(object):
         if len(numlist) < 2:
             return '您输入的数组格式不正确，请确保长度大于2'
         else:
-            start = 0
-            end = len(numlist) - 1
-            while end > start:
-                sum = numlist[start] + numlist[end]
-                if sum == target:
-                    return [start + 1, end + 1]
-                elif sum < target:
-                    start += 1
-                elif sum > target:
-                    end -= 1
-            return '没有两个数字相加能得到目标值'
+            for i in range(0, len(numlist)-2):
+                start = i + 1
+                while start < len(numlist)-1:
+                    sum = numlist[i] + numlist[start]
+                    if sum == target:
+                        return [i + 1, start + 1]
+                    else:
+                        start += 1
+                return '没有两个数字相加能得到目标值'
 
-
+if __name__ == "__main__":
+    solution = Solution()
+    print solution.twoSum([3,2,4], 5)
 
 
 
